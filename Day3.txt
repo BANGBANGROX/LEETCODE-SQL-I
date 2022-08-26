@@ -1,0 +1,23 @@
+Day-3
+
+
+1.) Fix Names in a Table
+
+# Write your MySQL query statement below
+SELECT user_id, CONCAT(UCASE(LEFT(name, 1)), LCASE(SUBSTRING(name, 2))) AS name
+FROM Users
+ORDER BY user_id;
+
+2.) Group Sold Products By The Date
+
+# Write your MySQL query statement below
+SELECT sell_date, COUNT(DISTINCT(product)) as num_sold, GROUP_CONCAT(DISTINCT(product) ORDER BY product) AS products
+FROM Activities
+GROUP BY sell_date;
+
+3.) Patients With a Condition
+
+# Write your MySQL query statement below
+SELECT patient_id, patient_name, conditions
+FROM Patients
+WHERE conditions LIKE "% DIAB1%" OR conditions LIKE "DIAB1%";
