@@ -1,0 +1,28 @@
+Day-5
+
+1.) Combine Two Tables
+
+# Write your MySQL query statement below
+SELECT firstName, lastName, city, state
+FROM Person p
+LEFT JOIN Address a ON
+p.personId = a.personId;
+
+2.) Customer Who Visited but Did Not Make Any Transactions
+
+# Write your MySQL query statement below
+SELECT customer_id, COUNT(customer_id) AS count_no_trans
+FROM Visits v
+LEFT JOIN Transactions t
+ON v.visit_id = t.visit_id
+WHERE transaction_id IS NULL
+GROUP BY customer_id;
+
+3.) Article Views I
+
+# Write your MySQL query statement below
+SELECT author_id AS id
+FROM Views
+GROUP BY author_id, viewer_id
+HAVING author_id = viewer_id AND COUNT(view_date) > 0
+ORDER BY author_id; 
