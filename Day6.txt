@@ -1,0 +1,26 @@
+Day-6
+
+1.) Rising Temperature
+
+# Write your MySQL query statement below
+SELECT DISTINCT a.id
+FROM Weather a, Weather b
+WHERE a.recordDate = DATE_ADD(b.recordDate, INTERVAL 1 DAY) and a.temperature > b.temperature;
+
+
+2.) Sales Person
+
+# Write your MySQL query statement below
+SELECT name
+FROM SalesPerson
+WHERE sales_id NOT IN
+(
+    SELECT sales_id
+    FROM Orders
+    WHERE com_id IN
+    (
+       SELECT com_id
+       FROM Company
+       WHERE name = "RED"
+    )
+); 
