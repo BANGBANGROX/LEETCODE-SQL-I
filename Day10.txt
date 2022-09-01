@@ -1,0 +1,39 @@
+Day-10
+
+1.) Duplicate Emails
+
+# Write your MySQL query statement below
+SELECT email
+FROM Person
+GROUP BY email
+HAVING COUNT(email) > 1;
+
+
+2.) Actors and Directors Who Cooperated At Least Three Times
+
+# Write your MySQL query statement below
+SELECT actor_id, director_id
+FROM ActorDirector
+GROUP BY actor_id, director_id
+HAVING COUNT(timestamp) >= 3
+
+
+3.) Bank Account Summary II
+
+# Write your MySQL query statement below
+SELECT u.name, IFNULL(SUM(t.amount), 0) AS balance
+FROM Users u
+LEFT JOIN Transactions t
+ON u.account = t.account
+GROUP BY u.account
+HAVING balance > 10000;
+
+4.) Sales Analysis III
+
+# Write your MySQL query statement below
+SELECT p.product_id, p.product_name
+FROM Product p
+INNER JOIN Sales s
+ON p.product_id = s.product_id
+GROUP BY p.product_id
+HAVING MAX(s.sale_date) <= "2019-03-31" AND MIN(s.sale_date) >= "2019-01-01"; 
